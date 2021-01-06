@@ -26,16 +26,17 @@ public class App {
 
         //create map for each employee and his usage entry for user provided year
         map=  new HashMap<>();
-        cellPhoneUsageList.stream()
-                .filter(e -> e.getDate().getYear()==userYear)
-                .forEach(a->{
-                    if(! map.containsKey(a.getEmployeeId())){
-                        map.put(a.getEmployeeId(),new ArrayList<>());
-                    }
-                    List<CellPhoneUsageByMonth> list = map.get(a.getEmployeeId());
-                    list.add(a);
+            cellPhoneUsageList.stream()
+                    .filter(e -> e.getDate().getYear() == userYear)
+                    .forEach(a -> {
+                        if (!map.containsKey(a.getEmployeeId())) {
+                            map.put(a.getEmployeeId(), new ArrayList<>());
+                        }
+                        List<CellPhoneUsageByMonth> list = map.get(a.getEmployeeId());
+                        list.add(a);
 
-                });
+                    });
+        
 
         createReport(userYear);
         printHeader();
